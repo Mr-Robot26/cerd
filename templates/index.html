@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .btn-predict {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .btn-predict:hover {
+            background-color: #0056b3;
+        }
+        .result-container {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa;
+            color: #333;
+            
+        }
+        .result-heading {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .result-text {
+            font-size: 18px;
+        }
+        .fraud-result {
+            background-color: #ffc0c0; /* Default color for non-fraudulent */
+        }
+        .non-fraud-result {
+            background-color: #c0ffc0; /* Default color for fraudulent */
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Credit Card Fraud Detection</h1>
+        <div class="form-container">
+            <form method="post">
+                <div class="form-group">
+                    <label for="input_df">Enter All Features (comma-separated):</label>
+                    <input type="text" class="form-control" id="input_df" name="input_df" required>
+                </div>
+                <button type="submit" class="btn btn-predict btn-block">Predict</button>
+            </form>
+        </div>
+        
+        {% if result %}
+        <div class="result-container mt-3 {% if result == 'Fraud Transaction' %}fraud-result{% else %}non-fraud-result{% endif %}" id="result-container">
+            <h2 class="result-heading">Prediction Result:</h2>
+            <p class="result-text">{{ result }}</p>
+        </div>
+    {% endif %}
+    </div>
+    
+    
+</body>
+</html>

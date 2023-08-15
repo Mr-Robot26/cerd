@@ -4,7 +4,9 @@ import joblib
 app = Flask(__name__)
 
 # Load the pre-trained model using joblib
-model = joblib.load("C:/Users/shriv/OneDrive/Desktop/Credit_card_model")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(base_dir, 'models', 'credit_card_model')
+model = joblib.load(model_path)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
